@@ -1,0 +1,25 @@
+{
+  "name": "archipel-orchestrator",
+  "version": "0.0.1",
+  "description": "The orchestration part of Archipel solution",
+  "main": "dist/orchestrator.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel src --out-dir dist --copy-files",
+    "start": "chmod +x ./dist/orchestrator.js && ./dist/orchestrator.js"
+  },
+  "bin": {
+    "orchestrator": "./dist/orchestrator.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "7.4.4",
+    "node-docker-api": "1.1.22",
+    "@network-utils/tcp-ping": "1.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.5.0",
+    "@babel/core": "7.5.4",
+    "@babel/preset-env": "7.5.4"
+  }
+}
