@@ -14,8 +14,9 @@
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "7.4.4",
-    "node-docker-api": "1.1.22",
-    "@network-utils/tcp-ping": "1.1.0"
+    "@network-utils/tcp-ping": "1.1.0",
+    "ethers": "^4.0.36",
+    "node-docker-api": "1.1.22"
   },
   "devDependencies": {
     "@babel/cli": "7.5.0",
