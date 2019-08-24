@@ -3,10 +3,10 @@
 const { Contract, providers, Wallet } = require('ethers');
 
 const ARCHIPEL_ABI =[
-    "event LeadershipChanged(address indexed previousLeader, address indexed newLeader)",
+    "event LeaderChanged(address indexed previousLeader, address indexed newLeader)",
     "constructor()",
     "function leader() view returns (address)",
-    "function setLeader()"
+    "function setLeader(address _reportLeader)"
 ];
 
 const getLeader = async (archipelContractAddress,nodeUrl) => {
@@ -22,23 +22,35 @@ const getLeader = async (archipelContractAddress,nodeUrl) => {
       }
 };
 
-const setLeader = async (privateKey,archipelContractAddress,nodeUrl) => {
+const setLeader = async (privateKey,archipelContractAddress,nodeUrl,reportLeader) => {
     try {
 
         let provider = new providers.JsonRpcProvider(nodeUrl);
         let wallet = new Wallet(privateKey, provider);
         let contractWithSigner = new Contract(archipelContractAddress, ARCHIPEL_ABI, wallet)
 
-        let tx = await contractWithSigner.setLeader();
-
-        console.log("Transaction sent : "+tx.hash);
-
-        // The operation is NOT complete yet; we must wait until it is mined
-        await tx.wait();
-        console.log("Transaction mined : "+tx.hash);
-
-        const newLeader = await contractWithSigner.leader();
-        return newLeader;
+        console.log("Try call SetLeader with reported leader : "+reportLeader);
+        let tx;
+        try {
+            tx = await contractWithSigner.setLeader(reportLeader);
+            console.log("Transaction sent : "+tx.hash);
+            // The operation is NOT complete yet; we must wait until it is mined
+            await tx.wait();
+            console.log("Transaction mined : "+tx.hash);
+        }
+        catch (e){
+            console.log("Transaction FAILED ");
+            console.log(e);
+            return false;
+        }
+        const receipt = await provider.getTransactionReceipt(tx.hash);
+        if(receipt.status == 1 ){
+            console.log("Leadership changed. You are the new leader.");
+            return true 
+        }
+        else{
+           return false;
+        }
       } catch (error) {
         console.log(error);
         throw error;
