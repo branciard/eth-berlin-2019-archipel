@@ -13,6 +13,11 @@ const {
   setLeader 
 } = require('./chain');
 
+const {
+  sleep,
+} = require('./utils');
+
+
 const debug = Debug('orchestrator:docker');
 
 const {
@@ -30,6 +35,8 @@ const {
     HOSTS_WALLETS
   } = process.env
 
+let disconnect = false;
+
 const orchestrate = async () => {
 
   try {
@@ -37,6 +44,10 @@ const orchestrate = async () => {
     const hostsToPingArray = HOSTS_TO_PING.split(" ");
     const walletsArray = HOSTS_WALLETS.split(" ");
     
+    if (disconnect) {
+      await sleep(5000);
+    }
+
     console.log("Making pings to endpoints...");
     const pingResult = await pingEndpoints(hostsToPingArray);
 
@@ -48,6 +59,7 @@ const orchestrate = async () => {
     if (failPings.length == HOSTS_TO_PING.split(" ").length) {
       console.log("Can't ping anyone. Change to sync.");
       await startSync(VALIDATOR_NAME);
+      disconnect = true;
 
     } else {
 
@@ -82,7 +94,6 @@ const orchestrate = async () => {
         const leaderIndex = walletsArray.indexOf(currentLeader);
 
         console.log("Leader index " + leaderIndex);
-
 
         // If validator is not reachable the node will try to become the validator
         if (leaderIndex == -1 || !pingResult[leaderIndex].reachable) {
