@@ -8,7 +8,7 @@
     "start": "chmod +x ./dist/index.js && ./dist/index.js"
   },
   "bin": {
-    "orchestrator": "./dist/index.js"
+    "index": "./dist/index.js"
   },
   "author": "",
   "license": "ISC",
