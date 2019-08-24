@@ -2,13 +2,13 @@
   "name": "archipel-orchestrator",
   "version": "0.0.1",
   "description": "The orchestration part of Archipel solution",
-  "main": "dist/orchestrator.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir dist --copy-files",
-    "start": "chmod +x ./dist/orchestrator.js && ./dist/orchestrator.js"
+    "start": "chmod +x ./dist/index.js && ./dist/index.js"
   },
   "bin": {
-    "orchestrator": "./dist/orchestrator.js"
+    "orchestrator": "./dist/index.js"
   },
   "author": "",
   "license": "ISC",
