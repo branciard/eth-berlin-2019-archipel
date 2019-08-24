@@ -1,0 +1,22 @@
+{
+  "name": "archipel-chain",
+  "version": "1.0.0",
+  "description": "archipel-chain smart contract to optain a mutex on the current leader to validate in the federation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/branciard/eth-berlin-2019-archipel.git"
+  },
+  "author": "francois branciard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/branciard/eth-berlin-2019-archipel/issues"
+  },
+  "homepage": "https://github.com/branciard/eth-berlin-2019-archipel#readme",
+  "devDependencies": {
+    "truffle": "^5.0.33"
+  }
+}
