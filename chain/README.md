@@ -15,13 +15,13 @@ Starting migrations...
 
    Deploying 'Migrations'
    ----------------------
-   > transaction hash:    0x4ed2eef1f3ae0cb375102ce55d90a646f1a3a8ebd72e428f6c0d9455aecb7b76
+   > transaction hash:    0x1deba773af59238dab6233972e4b049abff0c11063145b5509206ced245ea5cd
    > Blocks: 1            Seconds: 5
-   > contract address:    0xad03E8dc2e1A7BDCABD5cE402Ca623BACdffE1A2
-   > block number:        14842
-   > block timestamp:     1566638257
+   > contract address:    0x3c7E17c19531d0A9622502d44E6638CEEC3169F8
+   > block number:        16054
+   > block timestamp:     1566650524
    > account:             0xdcE27B7622082b5415ED2C9f63bb1f4be99Fa891
-   > balance:             1.99477214
+   > balance:             1.98433886
    > gas used:            261393
    > gas price:           20 gwei
    > value sent:          0 ETH
@@ -39,29 +39,29 @@ Starting migrations...
 
    Deploying 'Archipel'
    --------------------
-   > transaction hash:    0x7d03d2d2f16235497c183170419a5412f91e2431a832f5d65660788f504421ff
+   > transaction hash:    0xd999f740f7fb6ff7c008763da5cc2b4e4b7a5663ef69b969a32e07e31243fa01
    > Blocks: 0            Seconds: 0
-   > contract address:    0x970EAaCc29D0E40605051a542aBB7D0fb7Fef196
-   > block number:        14844
-   > block timestamp:     1566638272
+   > contract address:    0xcE66d5344E364FF2C8915B787f9850EDaE69331C
+   > block number:        16056
+   > block timestamp:     1566650541
    > account:             0xdcE27B7622082b5415ED2C9f63bb1f4be99Fa891
-   > balance:             1.99010718
-   > gas used:            191225
+   > balance:             1.97678254
+   > gas used:            335793
    > gas price:           20 gwei
    > value sent:          0 ETH
-   > total cost:          0.0038245 ETH
+   > total cost:          0.00671586 ETH
 
 
    > Saving migration to chain.
    > Saving artifacts
    -------------------------------------
-   > Total cost:           0.0038245 ETH
+   > Total cost:          0.00671586 ETH
 
 
 Summary
 =======
 > Total deployments:   2
-> Final cost:          0.00905236 ETH
+> Final cost:          0.01194372 ETH
 
 ```
 
@@ -69,6 +69,10 @@ Summary
 # goerli chain deploy :
 
 ```
+Compiled successfully using:
+   - solc: 0.5.8+commit.23d335f2.Emscripten.clang
+
+
 Starting migrations...
 ======================
 > Network name:    'goerli'
@@ -81,13 +85,13 @@ Starting migrations...
 
    Deploying 'Migrations'
    ----------------------
-   > transaction hash:    0x37d8539f9650c2215f922b1725bcfdafab9353dd53b71753f5766a09d7d6cbb9
+   > transaction hash:    0xea7cb33945ad807ef10ada46cb14c4e397639dc69de1d31411cb3e95896ce53e
    > Blocks: 0            Seconds: 8
-   > contract address:    0x4D24E09AF9Af4f7bF30C100D6243506F22D1967a
-   > block number:        1174713
-   > block timestamp:     1566639038
+   > contract address:    0xcE66d5344E364FF2C8915B787f9850EDaE69331C
+   > block number:        1175466
+   > block timestamp:     1566650333
    > account:             0xdcE27B7622082b5415ED2C9f63bb1f4be99Fa891
-   > balance:             9.99477214
+   > balance:             9.979045555
    > gas used:            261393
    > gas price:           20 gwei
    > value sent:          0 ETH
@@ -95,8 +99,8 @@ Starting migrations...
 
    Pausing for 2 confirmations...
    ------------------------------
-   > confirmation number: 1 (block: 1174714)
-   > confirmation number: 2 (block: 1174715)
+   > confirmation number: 1 (block: 1175467)
+   > confirmation number: 2 (block: 1175468)
 
    > Saving migration to chain.
    > Saving artifacts
@@ -109,31 +113,32 @@ Starting migrations...
 
    Deploying 'Archipel'
    --------------------
-   > transaction hash:    0xa5d45f3dcfc234192a11650e0d887e1a77f2df31179c0ec43db688ab23175d52
-   > Blocks: 0            Seconds: 8
-   > contract address:    0x2BF2EA06653c218772842F3a1a60D8F26fACdD4B
-   > block number:        1174717
-   > block timestamp:     1566639098
+   > transaction hash:    0x60513d341411a6571b7a7a7356cdc2ef92d853b8855e1e53cca106e93fd0f12e
+   > Blocks: 0            Seconds: 4
+   > contract address:    0xbecfB5499a9488E445E89C5134aEF60D3A2A7147
+   > block number:        1175470
+   > block timestamp:     1566650393
    > account:             0xdcE27B7622082b5415ED2C9f63bb1f4be99Fa891
-   > balance:             9.98487932
-   > gas used:            191225
+   > balance:             9.971489235
+   > gas used:            335793
    > gas price:           20 gwei
    > value sent:          0 ETH
-   > total cost:          0.0038245 ETH
+   > total cost:          0.00671586 ETH
 
    Pausing for 2 confirmations...
    ------------------------------
-   > confirmation number: 1 (block: 1174718)
-   > confirmation number: 2 (block: 1174719)
+   > confirmation number: 1 (block: 1175471)
+   > confirmation number: 2 (block: 1175472)
 
    > Saving migration to chain.
    > Saving artifacts
    -------------------------------------
-   > Total cost:           0.0038245 ETH
+   > Total cost:          0.00671586 ETH
 
 
 Summary
 =======
 > Total deployments:   2
-> Final cost:          0.00905236 ETH
+> Final cost:          0.01194372 ETH
+
 ```

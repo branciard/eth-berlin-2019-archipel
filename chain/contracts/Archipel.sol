@@ -4,18 +4,21 @@ contract Archipel {
 
     address private _leader;
     
-    event LeadershipChanged(address indexed previousLeader, address indexed newLeader);
+    event LeaderChanged(address indexed previousLeader, address indexed newLeader);
 
     /**
      * @dev take  leadership for validate in the federation
      */
-    function setLeader() public {
-        if ( _leader != msg.sender ) {
-            address oldLeader = _leader;
-            address newLeader = msg.sender;
-            _leader = newLeader;
-            emit LeadershipChanged(oldLeader,newLeader);
-        }
+    function setLeader(address _reportLeader) public {
+        require(
+            _leader == address(0) || ( _leader != address(0) && _reportLeader == _leader ),
+            "Reported Leader do not match the active one."
+        );
+        require(_leader != msg.sender,  "You are already the leader.");
+        address previousLeader = _leader;
+        address newLeader = msg.sender;
+        _leader = newLeader;
+        emit LeaderChanged(previousLeader, newLeader);
     }
 
     /**
