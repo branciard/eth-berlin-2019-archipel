@@ -17,7 +17,8 @@
     "@network-utils/tcp-ping": "1.1.0",
     "dockerode": "2.5.8",
     "ethers": "^4.0.36",
-    "is-reachable": "^3.1.0"
+    "is-reachable": "^3.1.0",
+    "net-ping": "^1.2.3"
   },
   "devDependencies": {
     "@babel/cli": "7.5.0",
