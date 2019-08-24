@@ -10,15 +10,24 @@ const docker = new Docker({socketPath: '/var/run/docker.sock'});
 // Docker Pull promise
 const dockerPullPromise = image => new Promise((resolve, reject) => {
     docker.pull(image, function (err, stream) {
-        docker.modem.followProgress(stream, onFinished, onProgress);
-        function onFinished(err, output) {
-            if (err)
+        if (err) {
+            console.log(err);
             resolve(false);
-            else
-            resolve(true);
-        }
-        function onProgress(event) {
-          
+        } else {
+            docker.modem.followProgress(stream, onFinished, onProgress);
+            function onFinished(err, output) {
+
+                if (err) {
+                    console.log(err);
+                    resolve(false);
+                } else {
+                    resolve(true);
+                }
+                
+            }
+            function onProgress(event) {
+            
+            }
         }
       
     });
