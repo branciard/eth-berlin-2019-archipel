@@ -44,8 +44,10 @@ const orchestrate = async () => {
     const hostsToPingArray = HOSTS_TO_PING.split(" ");
     const walletsArray = HOSTS_WALLETS.split(" ");
     
+    // If the last known state was disconnect sleeping for 5 sec
     if (disconnect) {
       await sleep(5000);
+      disconnect = false;
     }
 
     console.log("Making pings to endpoints...");
@@ -56,7 +58,8 @@ const orchestrate = async () => {
     const failPings = pingResult.filter(element => element.reachable == false);
 
     // If the node fails to ping all other nodes and external node so it is down
-    if (failPings.length == HOSTS_TO_PING.split(" ").length) {
+    if (failPings.length == HOSTS_TO_PlsING.split(" ").length) {
+
       console.log("Can't ping anyone. Change to sync.");
       await startSync(VALIDATOR_NAME);
       disconnect = true;
