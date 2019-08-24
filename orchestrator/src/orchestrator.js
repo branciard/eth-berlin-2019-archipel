@@ -77,10 +77,10 @@ const orchestrate = async () => {
         await startSync(VALIDATOR_NAME);
 
         // Get ping of current validator
-        const validatorStatus = pingResult[walletsArray.indexOf(currentLeader)]
+        const leaderIndex = walletsArray.indexOf(currentLeader);
 
         // If validator is not reachable the node will try to become the validator
-        if (!validatorStatus.reachable) {
+        if (leaderIndex == -1 || !pingResult[leaderIndex].reachable) {
 
           console.log("Validator is not reachable. Starting validator node");
           const leadeshipChanged = await setLeader(PRIVATE_KEY, ARCHIPEL_CONTRACT_ADDRESS, NODE_URL, currentLeader);
@@ -91,6 +91,7 @@ const orchestrate = async () => {
           }
 
         }
+        
       }
     }
 

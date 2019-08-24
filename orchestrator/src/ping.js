@@ -8,7 +8,7 @@ const pingHostPromise = endpoint => new Promise((resolve, reject) => {
         else
         resolve(true);
     });
-  });
+});
 
 
 // Ping a list of hosts and return theirs state

@@ -7,6 +7,23 @@ const {
 const debug = Debug('orchestrator:docker');
 const docker = new Docker({socketPath: '/var/run/docker.sock'});
 
+// Docker Pull promise
+const dockerPullPromise = image => new Promise((resolve, reject) => {
+    docker.pull(image, function (err, stream) {
+        docker.modem.followProgress(stream, onFinished, onProgress);
+        function onFinished(err, output) {
+            if (err)
+            resolve(false);
+            else
+            resolve(true);
+        }
+        function onProgress(event) {
+          
+        }
+      
+    });
+});
+
 // Gets container instance by name
 const getContainerByName = async (
     name = throwIfMissing(),
@@ -55,7 +72,7 @@ const startContainer = async (
 
     try {
         // Pulling image
-        await docker.pull(data.Image);
+        await dockerPullPromise(data.Image);
 
         // Starting container
         await docker.createContainer(data).then(function(container) {
