@@ -99,7 +99,11 @@ const startValidator = async (
         const container = await getContainerByName('polkadot-validator');
         const containerSync = await getContainerByName('polkadot-sync');
 
-        if (container == undefined && containerSync == undefined) {
+        if (containerSync != undefined) {
+            await stopSync();
+        }
+
+        if (container == undefined) {
 
             const data = {
                     name: 'polkadot-validator',
@@ -161,7 +165,12 @@ const startSync = async (
         
         const container = await getContainerByName('polkadot-sync');
         const containerValidator = await getContainerByName('polkadot-validator');
-        if (container == undefined && containerValidator == undefined) {
+
+        if (containerValidator != undefined) {
+            await stopValidator();
+        }
+
+        if (container == undefined) {
             const data = {
                     name: 'polkadot-sync',
                     Image: 'chevdor/polkadot:0.4.4',

@@ -1,18 +1,20 @@
 #!/usr/bin/env node
 "use strict";
 require('@babel/polyfill');
+
 const { 
-    checkState 
+    orchestrate 
 } = require('./orchestrator');
 
 const {
-    PRIVATE_KEY,
-    ARCHIPEL_CONTRACT_ADDRESS,
-    NODE_URL
-} = process.env
+    sleep,
+} = require('./utils');
 
 async function main() {
-    setInterval(checkState, 3000);
+    while (true) {
+        await orchestrate();
+        await sleep(5000);
+    }
 };
 
 main();
