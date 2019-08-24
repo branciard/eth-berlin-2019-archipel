@@ -55,14 +55,17 @@ const orchestrate = async () => {
       console.log(currentLeader);
       console.log(ETH_ADDRESS);
 
+      // If there is no current leader the node will propose himself
       if (currentLeader == "0x0000000000000000000000000000000000000000") {
 
         const leadeshipChanged = await setLeader(PRIVATE_KEY, ARCHIPEL_CONTRACT_ADDRESS, NODE_URL, 0);
 
+        // If the node changed the leadership it becomes the new validator node
         if (leadeshipChanged) {
           await startValidator(VALIDATOR_NAME, VALIDATOR_KEY);
         } 
 
+      // If the node is the current leader assuring that the validator is strated
       } else if (currentLeader == ETH_ADDRESS) {
 
         console.log("Staring validator node");
@@ -73,12 +76,16 @@ const orchestrate = async () => {
         console.log("Staring sync node");
         await startSync(VALIDATOR_NAME);
 
+        // Get ping of current validator
         const validatorStatus = pingResult[walletsArray.indexOf(currentLeader)]
 
+        // If validator is not reachable the node will try to become the validator
         if (!validatorStatus.reachable) {
 
           console.log("Validator is not reachable. Starting validator node");
           const leadeshipChanged = await setLeader(PRIVATE_KEY, ARCHIPEL_CONTRACT_ADDRESS, NODE_URL, currentLeader);
+          
+          // If the node changed the leader it starts validator
           if (leadeshipChanged) {
             await startValidator(VALIDATOR_NAME, VALIDATOR_KEY);
           }

@@ -10,6 +10,8 @@ const pingHostPromise = endpoint => new Promise((resolve, reject) => {
     });
   });
 
+
+// Ping a list of hosts and return theirs state
 const pingEndpoints = async (endpointsList) => {
     var pingEndpointsResult = [];
     for(let endpoint of endpointsList)

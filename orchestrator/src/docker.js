@@ -7,6 +7,7 @@ const {
 const debug = Debug('orchestrator:docker');
 const docker = new Docker({socketPath: '/var/run/docker.sock'});
 
+// Gets container instance by name
 const getContainerByName = async (
     name = throwIfMissing(),
 ) => {
@@ -27,6 +28,7 @@ const getContainerByName = async (
       }
 };
 
+// Gets volume instance by name
 const getVolumeByName = async (
     name = throwIfMissing(),
 ) => {
@@ -46,15 +48,16 @@ const getVolumeByName = async (
       }
 };
 
-
+// Starts container with special config
 const startContainer = async (
     data = throwIfMissing(),
 ) => {
 
     try {
-
+        // Pulling image
         await docker.pull(data.Image);
 
+        // Starting container
         await docker.createContainer(data).then(function(container) {
             return container.start();
         });
@@ -66,6 +69,7 @@ const startContainer = async (
 
 };
 
+// Creating validator volume
 const createVolume = async () => {
     try {
         const volume = await getVolumeByName("polkadot-volume");
@@ -87,22 +91,24 @@ const createVolume = async () => {
 
 };
 
-
+// Starting validator node
 const startValidator = async (
     name = throwIfMissing(),
     key = throwIfMissing(),
 ) => {
     try {
-
+        // Creating volume
         await createVolume();
 
         const container = await getContainerByName('polkadot-validator');
         const containerSync = await getContainerByName('polkadot-sync');
 
+        // If node was in sync state we must stop sync container
         if (containerSync != undefined) {
             await stopSync();
         }
 
+        // If validator was not already started start it
         if (container == undefined) {
 
             const data = {
@@ -135,6 +141,7 @@ const startValidator = async (
 
 };
 
+// Stopping validator node
 const stopValidator = async () => {
     try {
 
@@ -156,20 +163,23 @@ const stopValidator = async () => {
 
 };
 
+// Starting syncronisation node
 const startSync = async (
     name = throwIfMissing(),
 ) => {
     try {
-
+        // Creating volume if necessary
         await createVolume();
         
         const container = await getContainerByName('polkadot-sync');
         const containerValidator = await getContainerByName('polkadot-validator');
 
+        // If the node is in validation state stopping validator
         if (containerValidator != undefined) {
             await stopValidator();
         }
 
+        // If sync node is not launched launching it
         if (container == undefined) {
             const data = {
                     name: 'polkadot-sync',
@@ -200,6 +210,7 @@ const startSync = async (
     }
 };
 
+// Stopping sync node
 const stopSync = async () => {
 
     try {

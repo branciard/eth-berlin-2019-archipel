@@ -10,7 +10,9 @@ const {
     sleep,
 } = require('./utils');
 
+// Main function
 async function main() {
+    // Looping and sleeping
     while (true) {
         await orchestrate();
         await sleep(5000);

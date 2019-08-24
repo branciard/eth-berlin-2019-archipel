@@ -9,6 +9,7 @@ const ARCHIPEL_ABI =[
     "function setLeader(address _reportLeader)"
 ];
 
+// Get leader from blockchain
 const getLeader = async (archipelContractAddress,nodeUrl) => {
     try {
 
@@ -22,6 +23,7 @@ const getLeader = async (archipelContractAddress,nodeUrl) => {
       }
 };
 
+// Set leader to blockchain
 const setLeader = async (privateKey,archipelContractAddress,nodeUrl,reportLeader) => {
     try {
 
