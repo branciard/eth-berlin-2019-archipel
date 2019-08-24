@@ -166,8 +166,7 @@ const stopValidator = async () => {
  
         if (containerByName != undefined) {
             const container = await docker.getContainer(containerByName.Id);
-            await container.stop();
-            await container.remove();
+            await container.remove({"force": true});
             return true;
         } else {
             console.log("Validator was not found.");
@@ -234,8 +233,7 @@ const stopSync = async () => {
         const containerByName = await getContainerByName('polkadot-sync');
         if (containerByName != undefined) {
             const container = await docker.getContainer(containerByName.Id);
-            await container.stop();
-            await container.remove();
+            await container.remove({"force": true});
             return true;
         } else {
             console.log("Sync was not found.");
