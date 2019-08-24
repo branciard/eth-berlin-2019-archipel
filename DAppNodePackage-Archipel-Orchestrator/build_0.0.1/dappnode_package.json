@@ -1,0 +1,36 @@
+{
+  "name": "dappnodepackage-archipel-orchestrator.public.dappnode.eth",
+  "version": "0.0.1",
+  "description": "DAppNode package for archipel orchestrator ",
+  "avatar": "/ipfs/QmeR2oBU7uHCZzzjuo1ecg6DT5rTTRqHgWQXPXc4ewSF76",
+  "type": "service",
+  "image": {
+    "path": "dappnodepackage-archipel-orchestrator.public.dappnode.eth_0.0.1.tar.xz",
+    "hash": "/ipfs/QmV1cBXftgvTGWRY4jitsCUHUYFyqSJZCAdXxp4ySA9Uv2",
+    "size": 70490655,
+    "volumes": [
+      "/var/run/docker.sock:/var/run/docker.sock"
+    ],
+    "ports": [],
+    "environment": [
+      "PRIVATE_KEY=changeme",
+      "ETH_ADDRESS=0x0000000000000000000000000000000000000000",
+      "ARCHIPEL_CONTRACT_ADDRESS=0xbecfB5499a9488E445E89C5134aEF60D3A2A7147",
+      "NODE_URL=http://goerli-geth.dappnode:8545",
+      "VALIDATOR_NAME=archipel-island",
+      "VALIDATOR_KEY=changeme",
+      "HOSTS_TO_PING=8.8.8.8",
+      "HOSTS_WALLETS=0x0000000000000000000000000000000000000000"
+    ],
+    "restart": "always"
+  },
+  "dependencies": {},
+  "author": "francois branciard",
+  "categories": [
+    "Developer tools"
+  ],
+  "links": {
+    "homepage": "https://github.com/branciard/eth-berlin-2019-archipel.git"
+  },
+  "license": "GLP-3.0"
+}
