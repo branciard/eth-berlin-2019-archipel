@@ -17,7 +17,6 @@ const {
     NODE_URL
   } = process.env
 
-
   /*
    demo chain.js usage gist : 
     let initialLeader = await getLeader(ARCHIPEL_CONTRACT_ADDRESS,NODE_URL);
@@ -26,14 +25,16 @@ const {
     console.log(newLeader);
   */
 
-async function main() {
-    
+const checkState = async () => {
+  try {
+    console.log("gogo");
+  } catch (error) {
+    debug('checkState', error);
+    throw error;
+  }
+};
 
-    const name = "test-one-new";
-    const key = "0xa40f0300247dc7ed20bc3f9862b43bc9011fce342e2699d3d083c4d090dcd263";
 
-    console.log(await startValidator(name, key));
-    
-}
-
-main();
+module.exports = {
+  checkState,
+};
