@@ -39,6 +39,8 @@ const orchestrate = async () => {
     
     console.log("Making pings to endpoints...");
     const pingResult = await pingEndpoints(hostsToPingArray);
+
+    console.log(pingResult);
   
     const failPings = pingResult.filter(element => element.reachable == false);
 
@@ -78,6 +80,9 @@ const orchestrate = async () => {
 
         // Get ping of current validator
         const leaderIndex = walletsArray.indexOf(currentLeader);
+
+        console.log("Leader index " + leaderIndex);
+
 
         // If validator is not reachable the node will try to become the validator
         if (leaderIndex == -1 || !pingResult[leaderIndex].reachable) {
