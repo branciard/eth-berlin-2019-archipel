@@ -15,8 +15,9 @@
   "dependencies": {
     "@babel/polyfill": "7.4.4",
     "@network-utils/tcp-ping": "1.1.0",
+    "dockerode": "2.5.8",
     "ethers": "^4.0.36",
-    "dockerode": "2.5.8"
+    "is-reachable": "^3.1.0"
   },
   "devDependencies": {
     "@babel/cli": "7.5.0",
