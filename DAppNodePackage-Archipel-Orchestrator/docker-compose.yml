@@ -1,0 +1,17 @@
+version: '3.4'
+services:
+  dappnodepackage-archipel-orchestrator.public.dappnode.eth:
+    image: 'dappnodepackage-archipel-orchestrator.public.dappnode.eth:0.0.1'
+    build: ../orchestrator
+    environment:  
+      - PRIVATE_KEY=changeme
+      - ETH_ADDRESS=0x0000000000000000000000000000000000000000
+      - ARCHIPEL_CONTRACT_ADDRESS=0xbecfB5499a9488E445E89C5134aEF60D3A2A7147
+      - NODE_URL=http://goerli-geth.dappnode:8545
+      - VALIDATOR_NAME=archipel-island
+      - VALIDATOR_KEY=changeme
+      - HOSTS_TO_PING=8.8.8.8
+      - HOSTS_WALLETS=0x0000000000000000000000000000000000000000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports: []
