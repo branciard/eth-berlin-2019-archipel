@@ -29,6 +29,10 @@ const {
 async function main() {
     
     console.log(await startValidator());
+
+    console.log(await stopValidator());
+
+    console.log(await startSync());
     
 }
 

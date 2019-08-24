@@ -53,18 +53,11 @@ const startContainer = async (
 
     try {
 
-        await docker.pull(data.Image, function(err, stream) {
-            docker.modem.followProgress(stream, onFinished, onProgress);
-          
-            function onFinished(err, output) {
-                docker.createContainer(data).then(function(container) {
-                    return container.start();
-                });
-            }
-            function onProgress(event) {
-              //
-            }
-          });
+        await docker.pull(data.Image);
+
+        await docker.createContainer(data).then(function(container) {
+            return container.start();
+        });
 
     } catch (error) {
         debug('startContainer', error);
@@ -84,7 +77,7 @@ const createVolume = async () => {
             await docker.createVolume(options);
             return true;
         } else {
-            console.log("Volume already exsits.");
+            console.log("Volume already exists.");
             return false;
         }
     } catch (error) {
