@@ -88,7 +88,10 @@ const createVolume = async () => {
 };
 
 
-const startValidator = async () => {
+const startValidator = async (
+    name = throwIfMissing(),
+    key = throwIfMissing(),
+) => {
     try {
 
         await createVolume();
@@ -101,7 +104,7 @@ const startValidator = async () => {
             const data = {
                     name: 'polkadot-validator',
                     Image: 'chevdor/polkadot:0.4.4',
-                    Cmd: ['polkadot', '--name', 'test_one', '--validator', '--key', '0xa40f0300247dc7ed20bc3f9862b43bc9011fce342e2699d3d083c4d090dcd263'],
+                    Cmd: ['polkadot', '--name', name, '--validator', '--key', key],
                     HostConfig: {
                         "Mounts": [
                             {
@@ -149,7 +152,9 @@ const stopValidator = async () => {
 
 };
 
-const startSync = async () => {
+const startSync = async (
+    name = throwIfMissing(),
+) => {
     try {
 
         await createVolume();
@@ -160,7 +165,7 @@ const startSync = async () => {
             const data = {
                     name: 'polkadot-sync',
                     Image: 'chevdor/polkadot:0.4.4',
-                    Cmd: ['polkadot', '--name', 'test_one'],
+                    Cmd: ['polkadot', '--name', name],
                     HostConfig: {
                         "Mounts": [
                             {

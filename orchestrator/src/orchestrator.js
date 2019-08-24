@@ -28,11 +28,11 @@ const {
 
 async function main() {
     
-    console.log(await startValidator());
 
-    console.log(await stopValidator());
+    const name = "test-one-new";
+    const key = "0xa40f0300247dc7ed20bc3f9862b43bc9011fce342e2699d3d083c4d090dcd263";
 
-    console.log(await startSync());
+    console.log(await startValidator(name, key));
     
 }
 
