@@ -6,8 +6,8 @@
   "type": "service",
   "image": {
     "path": "dappnodepackage-archipel-orchestrator.public.dappnode.eth_0.0.1.tar.xz",
-    "hash": "/ipfs/QmV1cBXftgvTGWRY4jitsCUHUYFyqSJZCAdXxp4ySA9Uv2",
-    "size": 70490655,
+    "hash": "/ipfs/QmUBf236PVHw1meug1uvZsX3DumvhBivyPfpWfJPnNHsPR",
+    "size": 62537507,
     "volumes": [
       "/var/run/docker.sock:/var/run/docker.sock"
     ],
