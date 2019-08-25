@@ -33,7 +33,7 @@ body{
 	border: 1px solid #ddd;
 	color: #333;
 	padding: 20px;
-	width: 180px; /* plan width = 180 + 20 + 20 + 1 + 1 = 222px */      
+	width: 280px; /* plan width = 180 + 20 + 20 + 1 + 1 = 222px */      
 	float: left;
 	position: relative;
 }
@@ -162,6 +162,31 @@ body{
 	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 2px 0 rgba(0, 0, 0, .7);
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 2px 0 rgba(0, 0, 0, .7);
 }
+#pricing-table .backup {
+	position: relative;
+	padding: 8px 20px;
+	margin: 20px 0 0 0;  
+	color: #fff;
+	font: bold 14px Arial, Helvetica;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: inline-block;       
+	background-color: #ce3f3f;
+	background-image: -moz-linear-gradient(#ce3f3f, #cc2626);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ce3f3f), to(#cc2626));    
+	background-image: -webkit-linear-gradient(#ce3f3f, #cc2626);
+	background-image: -o-linear-gradient(#ce3f3f, #cc2626);
+	background-image: -ms-linear-gradient(#ce3f3f, #cc2626);
+	background-image: linear-gradient(#ce3f3f, #cc2626);
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;     
+	text-shadow: 0 1px 0 rgba(0,0,0,.3);        
+	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 2px 0 rgba(0, 0, 0, .7);
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 2px 0 rgba(0, 0, 0, .7);
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 2px 0 rgba(0, 0, 0, .7);
+}
+
 
 #pricing-table .signup:hover {
 	background-color: #62bc30;

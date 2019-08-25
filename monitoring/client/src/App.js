@@ -92,6 +92,7 @@ class App extends Component {
     };
   }
   let divStyleRADIATOR = {};
+
   if(this.state.storageValue == '0x468e210179C85b7f3b548050B0566A79Ba1dAAc5'){
     divStyleRADIATOR = {
     zIndex: 2,
@@ -127,7 +128,7 @@ class App extends Component {
         </ul>    
     </div>
     <div class="plan" style={divStyleRADIATOR}>
-        <h3>DAPPNODE<span>RADIATOR</span></h3>
+        <h3>DAPPNODE<span>GRILL</span></h3>
 		<a class="signup" href="">{this.state.storageValue == '0x468e210179C85b7f3b548050B0566A79Ba1dAAc5'?"VALIDATE":"BACKUP"}</a>
         <ul>
             <li><b>Address</b> 0x468e210179C85b7f3b548050B0566A79Ba1dAAc5</li>		
