@@ -1,4 +1,7 @@
 # Archipel Solution
+
+[![Demo](https://img.youtube.com/vi/xwrSOgPGx8E/0.jpg)](https://www.youtube.com/watch?v=xwrSOgPGx8E)
+
 ## Introduction
 We hack on a solution to resolve high availability problem of Validator nodes in PoS.
 This project will allow anyone to build its own highly available Validator setup.
@@ -31,6 +34,10 @@ Source Code of Web UI:
 
 
 ## Archipel Orchestrator
+Archipel Orchestrator is the main component of Archipel solution.
+
+It watches the blockchain and pings other nodes. Then it switches the validator mode if necessary.
+
 ![WebUIPkgInstall](doc/img/dappnode_pkg_install.png)
 
 ![WebUIEnvVars](doc/img/env_vars.png)
