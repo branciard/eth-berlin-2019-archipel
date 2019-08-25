@@ -7,7 +7,7 @@ No Aragon Package Manager Repo yet.
 
 IPFS link 
 ```
-/ipfs/QmQZDL5MxjsbAvaZMBRLfhFSS8YfqxaSyZMf5Jf5i1fdiG
+/ipfs/QmPk2xBHaHbrjYYz7Y5oDpWuNp6sEqpyxkTJ91QQsm7xio
 ```
 
 
