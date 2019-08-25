@@ -23,7 +23,7 @@ const dockerPullPromise = image => new Promise((resolve, reject) => {
                 } else {
                     resolve(true);
                 }
-                
+
             }
             function onProgress(event) {
             
@@ -127,6 +127,7 @@ const startValidator = async (
         await createVolume();
 
         const container = await getContainerByName('polkadot-validator');
+        //console.log(container);
         const containerSync = await getContainerByName('polkadot-sync');
 
         // If node was in sync state we must stop sync container
@@ -157,6 +158,13 @@ const startValidator = async (
             await startContainer(data);
             return true;
         } else {
+
+            // Correct exited state containers problem
+            if (container.State != "running") {
+                await stopValidator();
+                await startValidator(name, key);
+            }
+
             console.log("Node is already started.");
             return false;
         }    
@@ -192,12 +200,15 @@ const stopValidator = async () => {
 const startSync = async (
     name = throwIfMissing(),
 ) => {
+
     try {
         // Creating volume if necessary
         await createVolume();
         
         const container = await getContainerByName('polkadot-sync');
         const containerValidator = await getContainerByName('polkadot-validator');
+
+        //console.log(container);
 
         // If the node is in validation state stopping validator
         if (containerValidator != undefined) {
@@ -225,6 +236,12 @@ const startSync = async (
             await startContainer(data);
             return true;
         } else {
+
+            // Correct exited state containers problem
+            if (container.State != "running") {
+                await stopSync();
+                await startSync(name);
+            }
             console.log("Node was is already started.");
             return false;
         }

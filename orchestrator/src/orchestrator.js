@@ -58,7 +58,7 @@ const orchestrate = async () => {
     const failPings = pingResult.filter(element => element.reachable == false);
 
     // If the node fails to ping all other nodes and external node so it is down
-    if (failPings.length == HOSTS_TO_PlsING.split(" ").length) {
+    if (failPings.length == HOSTS_TO_PING.split(" ").length) {
 
       console.log("Can't ping anyone. Change to sync.");
       await startSync(VALIDATOR_NAME);
@@ -108,9 +108,8 @@ const orchestrate = async () => {
           if (leadeshipChanged) {
             await startValidator(VALIDATOR_NAME, VALIDATOR_KEY);
           }
-
+          
         }
-        
       }
     }
 
