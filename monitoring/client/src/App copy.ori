@@ -1,0 +1,155 @@
+import React, { Component } from "react";
+import SimpleStorageContract from "./contracts/Archipel.json";
+import getWeb3 from "./utils/getWeb3";
+
+import "./App.css";
+
+class App extends Component {
+  state = { storageValue: 0, web3: null, accounts: null, contract: null };
+
+  componentDidMount = async () => {
+    try {
+      // Get network provider and web3 instance.
+      const web3 = await getWeb3();
+
+      // Use web3 to get the user's accounts.
+      const accounts = await web3.eth.getAccounts();
+
+      // Get the contract instance.
+      const networkId = await web3.eth.net.getId();
+      //const deployedNetwork = SimpleStorageContract.networks[networkId];
+      const instance = new web3.eth.Contract(
+        SimpleStorageContract.abi,
+        //deployedNetwork && deployedNetwork.address,
+        '0xcE66d5344E364FF2C8915B787f9850EDaE69331C'
+      );
+
+      // Set web3, accounts, and contract to the state, and then proceed with an
+      // example of interacting with the contract's methods.
+      this.setState({ web3, accounts, contract: instance }, this.runExample);
+    } catch (error) {
+      // Catch any errors for any of the above operations.
+      alert(
+        `Failed to load web3, accounts, or contract. Check console for details.`,
+      );
+      console.error(error);
+    }
+  };
+
+
+   sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  runExample = async () => {
+    const { accounts, contract } = this.state;
+
+    // Stores a given value, 5 by default.
+    //await contract.methods.set(5).send({ from: accounts[0] });
+
+     while(true){
+      // Get the value from the contract to prove it worked.
+      const response = await contract.methods.leader().call();
+      console.log('coucou');
+      // Update state with the result.
+      this.setState({ storageValue: response });
+      await this.sleep(5000);
+     }
+
+
+
+    
+
+  };
+
+  render() {
+    if (!this.state.web3) {
+      return <div>Loading Web3, accounts, and contract...</div>;
+    }
+    return (
+      <div className="App">
+
+        <table>
+
+          <tr>
+            <td>Archipel AVADO</td>
+            <td>Archipel NUC</td>
+            <td>Archipel RADIATOR</td>
+          </tr>
+          <tr>
+            <td>Address 0xb347cfd9Fa53022BBbA2210d81687055478eaA25</td>
+            <td>Archipel 0x18625a9fc00653b7163F83aAb7c88C590fbCaeA8</td>
+            <td>Archipel 0x468e210179C85b7f3b548050B0566A79Ba1dAAc5</td>
+          </tr>
+          <tr>
+            <td>{this.state.storageValue == '0xb347cfd9Fa53022BBbA2210d81687055478eaA25'?"VALIDATE":"BACKUP"}</td>
+            <td>{this.state.storageValue == '0x18625a9fc00653b7163F83aAb7c88C590fbCaeA8'?"VALIDATE":"BACKUP"}</td>
+            <td>{this.state.storageValue == '0x468e210179C85b7f3b548050B0566A79Ba1dAAc5'?"VALIDATE":"BACKUP"}</td>
+          </tr>
+        </table>
+
+
+        <h1>Good to Go!</h1>
+        <p>Your Truffle Box is installed and ready.</p>
+        <h2>Smart Contract Example</h2>
+        <p>
+          If your contracts compiled and migrated successfully, below will show
+          a stored value of 5 (by default).
+        </p>
+        <p>
+          Try changing the value stored on <strong>line 40</strong> of App.js.
+        </p>
+        <div>The stored value is: {this.state.storageValue}</div>
+
+
+        <div id="pricing-table" class="clear">
+    <div class="plan">
+        <h3>Enterprise<span>$59</span></h3>
+        <a class="signup" href="">Sign up</a>         
+        <ul>
+            <li><b>10GB</b> Disk Space</li>
+            <li><b>100GB</b> Monthly Bandwidth</li>
+            <li><b>20</b> Email Accounts</li>
+			<li><b>Unlimited</b> subdomains</li>			
+        </ul> 
+    </div>
+    <div class="plan" id="most-popular">
+        <h3>Professional<span>$29</span></h3>
+        <a class="signup" href="">Sign up</a>        
+        <ul>
+            <li><b>5GB</b> Disk Space</li>
+            <li><b>50GB</b> Monthly Bandwidth</li>
+            <li><b>10</b> Email Accounts</li>
+			<li><b>Unlimited</b> subdomains</li>			
+        </ul>    
+    </div>
+    <div class="plan">
+        <h3>Standard<span>$17</span></h3>
+		<a class="signup" href="">Sign up</a>
+        <ul>
+            <li><b>3GB</b> Disk Space</li>
+            <li><b>25GB</b> Monthly Bandwidth</li>
+            <li><b>5</b> Email Accounts</li>
+			<li><b>Unlimited</b> subdomains</li>			
+        </ul>
+    </div>
+    <div class="plan">
+        <h3>Basic<span>$9</span></h3>
+        <a class="signup" href="">Sign up</a>		
+        <ul>
+            <li><b>1GB</b> Disk Space</li>
+            <li><b>10GB</b> Monthly Bandwidth</li>
+            <li><b>2</b> Email Accounts</li>
+			<li><b>Unlimited</b> subdomains</li>			
+        </ul>
+    </div> 	
+</div>
+
+
+
+      </div>
+    );
+  }
+}
+
+export default App;
