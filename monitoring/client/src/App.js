@@ -63,13 +63,55 @@ class App extends Component {
     if (!this.state.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
-
+    let divStyleNUC = {};
+      if(this.state.storageValue == '0x18625a9fc00653b7163F83aAb7c88C590fbCaeA8'){
+        divStyleNUC = {
+        zIndex: 2,
+        top: -13,
+        borderWidth: 3,
+        paddingTop: 30 ,
+        paddingRight:  20,
+        mozBorderRadius: 5,
+        webkitBorderRadius: 5,
+        borderRadius: 5,
+        boxShadow: 20 
+      };
+    }
+    let divStyleAVADO = {};
+    if(this.state.storageValue == '0xb347cfd9Fa53022BBbA2210d81687055478eaA25'){
+      divStyleAVADO = {
+      zIndex: 2,
+      top: -13,
+      borderWidth: 3,
+      paddingTop: 30 ,
+      paddingRight:  20,
+      mozBorderRadius: 5,
+      webkitBorderRadius: 5,
+      borderRadius: 5,
+      boxShadow: 20 
+    };
+  }
+  let divStyleRADIATOR = {};
+  if(this.state.storageValue == '0x468e210179C85b7f3b548050B0566A79Ba1dAAc5'){
+    divStyleRADIATOR = {
+    zIndex: 2,
+    top: -13,
+    borderWidth: 3,
+    paddingTop: 30 ,
+    paddingRight:  20,
+    mozBorderRadius: 5,
+    webkitBorderRadius: 5,
+    borderRadius: 5,
+    boxShadow: 20 
+  };
+}
     return (
       <div className="App">
 
 
+
     <div id="pricing-table" class="clear">
-    <div class="plan">
+    <div class="plan" style={divStyleAVADO} >
         <h3>DAPPNODE<span>AVADO</span></h3>
         <a class="signup" href="">{this.state.storageValue == '0xb347cfd9Fa53022BBbA2210d81687055478eaA25'?"VALIDATE":"BACKUP"}</a>         
         <ul>
@@ -77,15 +119,14 @@ class App extends Component {
         </ul> 
     </div>
 
-
-    <div class="plan"  id="most-popular" >
+    <div class="plan" style={divStyleNUC} >
         <h3>DAPPNODE<span>NUC</span></h3>
         <a class="signup" href="">{this.state.storageValue == '0x18625a9fc00653b7163F83aAb7c88C590fbCaeA8'?"VALIDATE":"BACKUP"}</a>        
         <ul>
         <li><b>Address</b> 0x18625a9fc00653b7163F83aAb7c88C590fbCaeA8</li>			
         </ul>    
     </div>
-    <div class="plan">
+    <div class="plan" style={divStyleRADIATOR}>
         <h3>DAPPNODE<span>RADIATOR</span></h3>
 		<a class="signup" href="">{this.state.storageValue == '0x468e210179C85b7f3b548050B0566A79Ba1dAAc5'?"VALIDATE":"BACKUP"}</a>
         <ul>
