@@ -75,7 +75,7 @@ const orchestrate = async () => {
       // If there is no current leader the node will propose himself
       if (currentLeader == "0x0000000000000000000000000000000000000000") {
 
-        const leadeshipChanged = await setLeader(PRIVATE_KEY, ARCHIPEL_CONTRACT_ADDRESS, NODE_URL, 0);
+        const leadeshipChanged = await setLeader(PRIVATE_KEY, ARCHIPEL_CONTRACT_ADDRESS, NODE_URL, "0x0000000000000000000000000000000000000000");
 
         // If the node changed the leadership it becomes the new validator node
         if (leadeshipChanged) {
